@@ -19,8 +19,6 @@ if command -v brew &>/dev/null; then
     direnv jq yq curl wget \
     yazi ffmpeg sevenzip poppler imagemagick resvg w3m lynx || true
 
-  brew tap FelixKratz/formulae || true
-  brew install sketchybar || true
   brew install --cask nikitabobko/tap/aerospace || true
 
   brew install --cask alacritty font-jetbrains-mono-nerd-font || true

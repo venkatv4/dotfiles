@@ -1,5 +1,10 @@
 [window]
-decorations = "None"
+decorations = "Full"
 
 [scrolling]
 history = 0
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Command"
+action = "ToggleFullscreen"
