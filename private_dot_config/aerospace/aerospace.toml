@@ -11,17 +11,22 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Mouse follows focus
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# ── Monitor assignments (update per machine with: aerospace list-monitors) ───
+# ── Monitor assignments ──────────────────────────────────────────
+# Fallback chains cover multiple setups without per-machine edits:
+#   work-main      : DELL (1), Built-in, DELL (2)
+#   work-secondary : LG HDR 4K, Built-in
+#   laptop-only    : Built-in Retina Display
+# AeroSpace picks the first connected match. Trailing 'main' = whatever's first.
 [workspace-to-monitor-force-assignment]
-1 = 'DELL S2725QS \(1\)'
-2 = 'DELL S2725QS \(1\)'
-3 = 'DELL S2725QS \(1\)'
+1 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
+2 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
+3 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
 4 = 'Built-in Retina Display'
 5 = 'Built-in Retina Display'
 6 = 'Built-in Retina Display'
-7 = 'DELL S2725QS \(2\)'
-8 = 'DELL S2725QS \(2\)'
-9 = 'DELL S2725QS \(2\)'
+7 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
+8 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
+9 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
 
 # ── Gaps ─────────────────────────────────────────────────────────
 [gaps]
@@ -63,16 +68,16 @@ alt-shift-f = 'layout floating tiling'
 alt-v = 'join-with right'
 alt-b = 'join-with down'
 
-# Switch workspaces (focus-monitor ensures the right monitor is activated)
-alt-1 = ['focus-monitor 1', 'workspace 1']
-alt-2 = ['focus-monitor 1', 'workspace 2']
-alt-3 = ['focus-monitor 1', 'workspace 3']
-alt-4 = ['focus-monitor 2', 'workspace 4']
-alt-5 = ['focus-monitor 2', 'workspace 5']
-alt-6 = ['focus-monitor 2', 'workspace 6']
-alt-7 = ['focus-monitor 3', 'workspace 7']
-alt-8 = ['focus-monitor 3', 'workspace 8']
-alt-9 = ['focus-monitor 3', 'workspace 9']
+# Switch workspaces (force-assignment routes to the correct monitor)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
 
 # Move window to workspace and follow
 cmd-alt-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -93,6 +98,10 @@ alt-shift-period = 'focus-monitor --wrap-around next'
 alt-shift-p = ['move-node-to-monitor --wrap-around prev', 'focus-monitor --wrap-around prev']
 alt-shift-n = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
 
+# Move entire workspace to monitor
+alt-shift-u = 'move-workspace-to-monitor --wrap-around prev'
+alt-shift-i = 'move-workspace-to-monitor --wrap-around next'
+
 # Service mode (alt-shift-semicolon to enter, esc to exit)
 alt-shift-semicolon = 'mode service'
 
@@ -105,6 +114,10 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 # ── Float specific apps (always on top) ──────────────────────────
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'layout tiling'
+
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
