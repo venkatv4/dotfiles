@@ -1,0 +1,5 @@
+window-decoration = false
+macos-titlebar-style = hidden
+scrollback-limit = 0
+
+keybind = cmd+f=toggle_fullscreen

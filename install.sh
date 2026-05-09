@@ -21,11 +21,11 @@ if command -v brew &>/dev/null; then
 
   brew install --cask nikitabobko/tap/aerospace || true
 
-  brew install --cask alacritty font-jetbrains-mono-nerd-font || true
+  brew install --cask ghostty font-jetbrains-mono-nerd-font || true
 
 elif command -v apt-get &>/dev/null; then
   sudo apt-get update && sudo apt-get install -y \
-    zsh vim tmux alacritty curl wget git jq unzip fontconfig build-essential \
+    zsh vim tmux curl wget git jq unzip fontconfig build-essential \
     ripgrep bat fd-find fzf eza direnv \
     ffmpeg p7zip-full poppler-utils imagemagick w3m lynx \
     sway waybar wofi grim slurp wl-clipboard \
@@ -36,14 +36,14 @@ elif command -v apt-get &>/dev/null; then
 
 elif command -v dnf &>/dev/null; then
   sudo dnf install -y \
-    zsh vim tmux alacritty curl wget git jq unzip fontconfig \
+    zsh vim tmux curl wget git jq unzip fontconfig \
     fzf ripgrep fd-find bat direnv gcc make eza \
     ffmpeg p7zip poppler-utils ImageMagick w3m lynx \
     sway waybar wofi grim slurp wl-clipboard || true
 
 elif command -v pacman &>/dev/null; then
   sudo pacman -Syu --noconfirm --needed \
-    zsh vim neovim tmux alacritty \
+    zsh vim neovim tmux ghostty \
     starship zoxide fzf ripgrep fd bat eza \
     git-delta lazygit github-cli \
     direnv jq yq curl wget base-devel \
