@@ -15,18 +15,19 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Fallback chains cover multiple setups without per-machine edits:
 #   work-main      : DELL (1), Built-in, DELL (2)
 #   work-secondary : LG HDR 4K, Built-in
+#   home           : DELL S2722QC, Built-in
 #   laptop-only    : Built-in Retina Display
 # AeroSpace picks the first connected match. Trailing 'main' = whatever's first.
 [workspace-to-monitor-force-assignment]
-1 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
-2 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
-3 = ['DELL S2725QS \(1\)', 'LG HDR 4K', 'main']
+1 = ['DELL S2725QS \(1\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
+2 = ['DELL S2725QS \(1\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
+3 = ['DELL S2725QS \(1\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
 4 = 'Built-in Retina Display'
 5 = 'Built-in Retina Display'
 6 = 'Built-in Retina Display'
-7 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
-8 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
-9 = ['DELL S2725QS \(2\)', 'LG HDR 4K', 'main']
+7 = ['DELL S2725QS \(2\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
+8 = ['DELL S2725QS \(2\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
+9 = ['DELL S2725QS \(2\)', 'DELL S2722QC', 'LG HDR 4K', 'main']
 
 # ── Gaps ─────────────────────────────────────────────────────────
 [gaps]
