@@ -18,9 +18,9 @@
       create-lockfiles nil
       use-short-answers t)
 
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(unless (eq system-type 'darwin) (menu-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'tool-bar-mode)   (tool-bar-mode -1))
+(when (fboundp 'menu-bar-mode)   (unless (eq system-type 'darwin) (menu-bar-mode -1)))
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode 1)
 (column-number-mode 1)
