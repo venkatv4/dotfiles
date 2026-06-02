@@ -2,12 +2,17 @@
 
 ;; ── Bootstrap ────────────────────────────────────────────────────────
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archives
+      '(("melpa"  . "https://melpa.org/packages/")
+        ("gnu"    . "https://elpa.gnu.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/packages/")))
 (package-initialize)
-(unless package-archive-contents (package-refresh-contents))
+;; Refresh if any managed package is missing (covers first run)
+(unless (package-installed-p 'doom-themes)
+  (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; use-package is built into Emacs 29+
+(require 'use-package)
 (setq use-package-always-ensure t)
 
 ;; ── Defaults ─────────────────────────────────────────────────────────
