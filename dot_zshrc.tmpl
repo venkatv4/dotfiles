@@ -25,21 +25,24 @@ setopt auto_cd interactive_comments no_beep
 autoload -Uz compinit && compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always $realpath'
 
-# ── Key bindings ─────────────────────────────────────────────────────
+# ── Key bindings (emacs) ─────────────────────────────────────────────
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # ── Aliases ──────────────────────────────────────────────────────────
-alias ls='ls --color=auto'
-alias ll='ls -lah'
 alias grep='grep --color=auto'
 
-(( $+commands[bat] ))    && alias cat='bat --paging=never'
-(( $+commands[eza] ))    && alias ls='eza --color=auto' && alias ll='eza -lah --git'
-(( $+commands[lazygit] )) && alias lg='lazygit'
+(( $+commands[bat] )) && alias cat='bat --paging=never'
+
+if (( $+commands[eza] )); then
+  alias ls='eza --color=auto'
+  alias ll='eza -lah --git'
+  alias lt='eza -l --sort=newest'
+  alias ltr='eza -l --sort=oldest'
+fi
 
 alias g='git'
 alias ga='git add'
@@ -48,6 +51,8 @@ alias gd='git diff'
 alias gs='git status -sb'
 alias gp='git push'
 alias gl='git log --oneline --graph -20'
+
+(( $+commands[emacsclient] )) && alias e='emacsclient -t -a emacs'
 
 {{ if eq .osid "darwin" -}}
 # macOS-specific
@@ -61,21 +66,11 @@ alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe -c Get-Clipboard'
 {{ end -}}
 
-# ── Claude quick-ask (non-interactive) ────────────────────────────────
+# ── Claude quick-ask (non-interactive) ───────────────────────────────
 function _claude_ask() {
   claude -p "$*" --output-format text
 }
 alias '??'='noglob _claude_ask'
-
-# ── Yazi wrapper (cd to dir on quit with 'y') ────────────────────────
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(command cat -- "$tmp")" && [[ -n "$cwd" ]] && [[ "$cwd" != "$PWD" ]]; then
-    builtin cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
 
 # ── Tool init ────────────────────────────────────────────────────────
 (( $+commands[starship] )) && eval "$(starship init zsh)"

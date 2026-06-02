@@ -1,4 +1,0 @@
-# Use catppuccin mocha to match nvim/bat theme
-# Install: ya pack -a yazi-rs/flavors:catppuccin-mocha
-[flavor]
-use = "catppuccin-mocha"

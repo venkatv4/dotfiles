@@ -8,37 +8,36 @@ set -euo pipefail
 if command -v brew &>/dev/null; then
   echo "Installing Homebrew packages..."
   brew install \
-    zsh vim neovim tmux \
+    zsh vim neovim emacs tmux \
     starship zoxide fzf ripgrep fd bat eza \
-    git-delta lazygit gh \
+    git-delta gh \
     direnv jq yq curl wget \
-    yazi ffmpeg sevenzip poppler imagemagick resvg w3m lynx || true
+    ffmpeg sevenzip poppler imagemagick resvg w3m lynx || true
 
   brew install --cask nikitabobko/tap/aerospace || true
-
-  brew install --cask alacritty font-jetbrains-mono-nerd-font || true
+  brew install --cask ghostty font-jetbrains-mono-nerd-font || true
 fi
 
 {{ else if eq .chezmoi.os "linux" -}}
 if command -v apt-get &>/dev/null; then
   sudo apt-get update && sudo apt-get install -y \
-    zsh vim neovim tmux alacritty curl wget git jq unzip fontconfig build-essential \
+    zsh vim neovim emacs tmux curl wget git jq unzip fontconfig build-essential \
     ripgrep bat fd-find fzf eza direnv \
     ffmpeg p7zip-full poppler-utils imagemagick w3m lynx || true
 
 elif command -v dnf &>/dev/null; then
   sudo dnf install -y \
-    zsh vim neovim tmux alacritty curl wget git jq unzip fontconfig \
+    zsh vim neovim emacs tmux curl wget git jq unzip fontconfig \
     fzf ripgrep fd-find bat direnv gcc make eza \
     ffmpeg p7zip poppler-utils ImageMagick w3m lynx || true
 
 elif command -v pacman &>/dev/null; then
   sudo pacman -Syu --noconfirm --needed \
-    zsh vim neovim tmux alacritty \
+    zsh vim neovim emacs tmux \
     starship zoxide fzf ripgrep fd bat eza \
-    git-delta lazygit github-cli \
+    git-delta github-cli \
     direnv jq yq curl wget base-devel \
-    yazi ffmpeg p7zip poppler imagemagick resvg w3m lynx || true
+    ffmpeg p7zip poppler imagemagick resvg w3m lynx || true
 
 else
   echo "Warning: Could not detect package manager — install apps manually"
