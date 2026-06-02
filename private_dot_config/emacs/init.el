@@ -68,6 +68,10 @@
 (use-package magit
   :bind ("C-x g" . magit-status))
 
+;; macOS ships BSD ls; dirvish needs GNU ls from coreutils (brew install coreutils)
+(when (and (eq system-type 'darwin) (executable-find "gls"))
+  (setq insert-directory-program "gls"))
+
 ;; ── Dirvish (modern dired) ───────────────────────────────────────────
 (use-package dirvish
   :init (dirvish-override-dired-mode)
