@@ -7,13 +7,13 @@ Cross-platform dotfiles managed with [chezmoi](https://www.chezmoi.io/). One com
 ### On a fresh machine (one-liner)
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply tsjeyaganesh/dotfiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply venkatv4/dotfiles
 ```
 
 ### From a local clone
 
 ```bash
-git clone https://github.com/tsjeyaganesh/dotfiles.git ~/dotfiles
+git clone https://github.com/venkatv4/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
