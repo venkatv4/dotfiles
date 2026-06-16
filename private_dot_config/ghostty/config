@@ -3,4 +3,5 @@ macos-titlebar-style = native
 macos-option-as-alt = left
 scrollback-limit = 0
 
+mouse-hide-while-typing = true
 keybind = cmd+f=toggle_fullscreen
