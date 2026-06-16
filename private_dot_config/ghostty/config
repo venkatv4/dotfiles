@@ -1,5 +1,5 @@
 window-decoration = true
-macos-titlebar-style = system
+macos-titlebar-style = native
 macos-option-as-alt = left
 scrollback-limit = 0
 
