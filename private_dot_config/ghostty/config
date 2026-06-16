@@ -1,4 +1,4 @@
-window-decoration = false
+window-decoration = true
 macos-titlebar-style = system
 macos-option-as-alt = left
 scrollback-limit = 0
